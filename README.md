@@ -1,5 +1,15 @@
 ## iTerm2 profile
 
+
+## Preview
+
+<p align="center">
+  <img src="terminal-preview.png" width="900">
+</p>
+
+
+
+
 This repository contains a single exported iTerm2 profile (`my_iterm2.json`). The file is an iTerm2 profile/bookmark export you can import into iTerm2 to quickly apply the same window, color, font, and hotkey settings used here.
 
 ### What's included
