@@ -1,45 +1,44 @@
-## iTerm2 profile
-
-
-## Preview
+# iTerm2 + Zsh Setup
 
 <p align="center">
-  <img src="terminal-preview.png" width="900">
+  <img src="zsh/terminal-preview.png" width="900">
 </p>
 
+## What's inside
 
+- `zsh/my_iterm2.json` — iTerm2 color & font profile
+- `zsh/.zshrc.example` — custom prompt with git branch
 
+## Setup
 
-This repository contains a single exported iTerm2 profile (`my_iterm2.json`). The file is an iTerm2 profile/bookmark export you can import into iTerm2 to quickly apply the same window, color, font, and hotkey settings used here.
+**1. Install [Oh My Zsh](https://ohmyz.sh/)**
 
-### What's included
-- `my_iterm2.json` — exported iTerm2 profile (colors, fonts, hotkey, cursor, and other profile settings).
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
-### Requirements
-- macOS
-- iTerm2 (recommended: latest stable release)
+**2. Install syntax highlighting plugin**
 
-### Install (GUI)
-1. Open iTerm2.
-2. Go to Preferences -> Profiles.
-3. Click the gear icon (or "Other Actions") and choose "Import..." (sometimes shown as "Import Profiles...").
-4. Select `my_iterm2.json` from this repository. iTerm2 will add the profile to your profiles list.
-5. To make it your default profile: right-click the new profile in the list and choose "Set as Default".
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+```
 
-### Install (advanced / system)
-If you'd like a machine-wide or dynamic profile approach, consult iTerm2's Dynamic Profiles documentation. The exported file in this repo is intended for GUI import; dynamic profiles usually require a specific JSON structure and placement under:
-`~/Library/Application Support/iTerm2/DynamicProfiles/`
+Add it to plugins in your `~/.zshrc`:
 
-### Usage
-- After importing, open a new window/tab and choose the "anvar custom" profile from the Profiles menu (or set it as default).
-- The profile contains a configured hotkey and several visual settings; you can edit any option from Preferences -> Profiles -> (select profile).
+```bash
+plugins=(git zsh-syntax-highlighting)
+```
 
-### Notes & troubleshooting
-- If import fails, ensure your iTerm2 version supports profile import (recent versions do).
-- If colors or fonts look different, double-check that the required fonts are installed on your system (the profile references `SFMono-Semibold 14` and `Monaco 12` for fallback).
-- The profile sets various options like transparency, blur, and hotkey behavior — review them in Preferences after import and adjust to taste.
+**3. Import iTerm2 profile**
 
-### Contact
-If something is unclear or you'd like help adapting the profile, open an issue or contact the author.
+iTerm2 → Settings → Profiles → Import JSON → select `zsh/my_iterm2.json` → set as default.
 
+**4. Apply the prompt**
 
+```bash
+cat zsh/.zshrc.example >> ~/.zshrc
+source ~/.zshrc
+```
+
+Done! 🎉
